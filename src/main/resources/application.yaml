@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: sport_events
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sport_events
+    username: postgres
+    password: ${DB_PASSWORD}
+    jpa:
+      hibernate:
+        ddl-auto: none
+      show-sql: true
