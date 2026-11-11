@@ -1,0 +1,23 @@
+PS C:\Users\ViktoriiaBanasevych\personal\knu\db\sport_events> docker run --name db-lab-redis -p 6379:6379 -d redis
+f22f300109636612f5b4698f2e6f0159171e6e51bf870a509ac9c78e194c3a6b
+PS C:\Users\ViktoriiaBanasevych\personal\knu\db\sport_events> docker exec -it db-lab-redis redis-cli
+127.0.0.1:6379> SET ticket:event_10:seat_45 "RESERVED_BY_USER_5" EX 300
+OK
+127.0.0.1:6379> GET ticket:event_10:seat_45
+"RESERVED_BY_USER_5"
+127.0.0.1:6379> TTL ticket:event_10:seat_45
+(integer) 297
+127.0.0.1:6379> INCR match:501:viewers
+(integer) 1
+127.0.0.1:6379> INCR match:501:viewers
+(integer) 2
+127.0.0.1:6379> DECR match:501:viewers
+(integer) 1
+127.0.0.1:6379> GET match:501:viewers
+"1"
+127.0.0.1:6379> exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug db-lab-redis
+    Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Users\ViktoriiaBanasevych\personal\knu\db\sport_events>
